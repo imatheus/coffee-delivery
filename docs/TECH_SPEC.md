@@ -69,7 +69,9 @@ coffee-delivery/
 │   │   └── ThemeToggle/           # Botão acessível para alternar light/dark
 │   ├── contexts/
 │   │   ├── CartContext.tsx
-│   │   └── ThemeContext.tsx
+│   │   ├── cartContextValue.ts
+│   │   ├── ThemeContext.tsx
+│   │   └── themeContextValue.ts
 │   ├── data/
 │   │   └── coffees.ts             # Catálogo tipado dos 14 cafés + taxa fixa
 │   ├── hooks/
