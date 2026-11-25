@@ -1,26 +1,13 @@
-import {
-  createContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from 'react'
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import { darkTheme } from '../styles/themes/dark'
 import { lightTheme } from '../styles/themes/light'
 import type { ThemeMode } from '../types/theme'
-
-export const THEME_STORAGE_KEY = '@coffee-delivery:theme-v1'
-
-export interface ThemeContextValue {
-  themeMode: ThemeMode
-  isDark: boolean
-  toggleTheme: () => void
-  setThemeMode: (mode: ThemeMode) => void
-}
-
-export const ThemeContext = createContext<ThemeContextValue | null>(null)
+import {
+  THEME_STORAGE_KEY,
+  ThemeContext,
+  type ThemeContextValue,
+} from './themeContextValue'
 
 function getInitialThemeMode(): ThemeMode {
   if (typeof window === 'undefined') {
@@ -38,7 +25,7 @@ function getInitialThemeMode(): ThemeMode {
 
   if (
     typeof window.matchMedia === 'function' &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
+    window.matchMedia('(prefers-color-scheme: dark)')?.matches
   ) {
     return 'dark'
   }
